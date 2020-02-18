@@ -22,7 +22,7 @@
   //Start debug (no serial port)
   #define DEBUG_BEGIN(X)   ;
   //Debug print line
-  #define DEBUG_PRINTLN(X) cout << X << endl;
+  #define DEBUG_PRINTLN(X) std::cout << X << endl;
   //Ends debugging (no serial port)
   #define DEBUG_END        ;
 #else
