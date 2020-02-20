@@ -12,11 +12,11 @@ int main() {
 	do {
 		std::cout << (m.IsEmpty() ? "IT'S EMPTY" : "NOT EMPTY") << std::endl;
 
-		std::cout << "Enter a SenderID and MSG -->";
-		int sid, mg;
-		std::cin >> sid >> mg;
+		std::cout << "Enter a SenderID, ReceiverID, and MSG -->";
+		int sid, rid, mg;
+		std::cin >> sid >> rid >> mg;
 
-		m.SetMsg(static_cast<CompID>(sid), static_cast<Protocol>(mg));
+		m.SetMsg(static_cast<CompID>(sid), static_cast<CompID>(rid), static_cast<Protocol>(mg));
 
 		std::cout << (m.IsEmpty() ? "IT'S EMPTY" : "NOT EMPTY") << std::endl;
 		m.Clear();

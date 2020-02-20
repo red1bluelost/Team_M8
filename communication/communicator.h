@@ -6,25 +6,25 @@
 #ifndef __COMMUNICATOR_H__
 #define __COMMUNICATOR_H__
 
+#include "game_protocol.h"
 
 class Communicator {
-	//enumerate component ids (place this into its own file)
-	
-
 	//current component id
+	CompID CID;
 
 	//message buffers for each component
 	static message motorBuffer;
 	static message gameController;
 	static message userInputBuffer; //this might not be necessary
 	
-	/*Enumerate ids for each component so the call there the right buffer*/
 
+	Public:
 	/*need functions:
 	 * Send(message msg)
 	 * message Retrieve()
 	 * Peek()
 	 */
+	void Send(Protocol msg);
 
 };
 

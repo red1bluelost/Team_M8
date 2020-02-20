@@ -8,6 +8,7 @@
 
 void Message::Clear() {
 	sender = CompID::NULL_ID;
+	receiver = CompID::NULL_ID;
 	msg = Protocol::NULL_PTC;
 }
 
@@ -15,7 +16,8 @@ bool Message::IsEmpty() {
 	return sender == CompID::NULL_ID;
 }
 
-void Message::SetMsg(CompID s, Protocol m) {
+void Message::SetMsg(CompID s, CompID r, Protocol m) {
 	sender = s;
+	receiver = r;
 	msg = m;
 }

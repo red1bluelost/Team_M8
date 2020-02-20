@@ -11,22 +11,20 @@
 
 class Message {
 	//message elements
-	//sender [using id type]
 	CompID sender = NULL_ID;
-	//msg
+	CompID receiver = NULL_ID;
 	Protocol msg = NULL_PTC;
-	//receiver (MAYBE)
 
 	public:
 	//constructor
-	Message(CompID s = NULL_ID, Protocol m = NULL_PTC) : sender(s), msg(m) {};
+	Message(CompID s = NULL_ID, CompID r = NULL_ID, Protocol m = NULL_PTC) : sender(s), receiver(r), msg(m) {};
 
 	//clear the message
 	void Clear();
 	//checks if empty
 	bool IsEmpty();
 	//set message (sender, message)
-	void SetMsg(CompID s, Protocol m);
+	void SetMsg(CompID s, CompID r, Protocol m);
 };
 
 
