@@ -16,7 +16,7 @@ int main() {
 		int sid, mg;
 		std::cin >> sid >> mg;
 
-		m.SetMsg(static_cast<Game::CompID>(sid), static_cast<Game::Protocol>(mg));
+		m.SetMsg(static_cast<CompID>(sid), static_cast<Protocol>(mg));
 
 		std::cout << (m.IsEmpty() ? "IT'S EMPTY" : "NOT EMPTY") << std::endl;
 		m.Clear();

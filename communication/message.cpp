@@ -7,15 +7,15 @@
 #include "game_protocol.h"
 
 void Message::Clear() {
-	sender = Game::CompID::NULL_ID;
-	msg = Game::Protocol::NULL_PTC;
+	sender = CompID::NULL_ID;
+	msg = Protocol::NULL_PTC;
 }
 
 bool Message::IsEmpty() {
-	return sender == Game::CompID::NULL_ID;
+	return sender == CompID::NULL_ID;
 }
 
-void Message::SetMsg(Game::CompID s, Game::Protocol m) {
+void Message::SetMsg(CompID s, Protocol m) {
 	sender = s;
 	msg = m;
 }

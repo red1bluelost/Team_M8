@@ -12,21 +12,21 @@
 class Message {
 	//message elements
 	//sender [using id type]
-	Game::CompID sender = Game::NULL_ID;
+	CompID sender = NULL_ID;
 	//msg
-	Game::Protocol msg = Game::NULL_PTC;
+	Protocol msg = NULL_PTC;
 	//receiver (MAYBE)
 
 	public:
 	//constructor
-	Message(Game::CompID s = Game::NULL_ID, Game::Protocol m = Game::NULL_PTC) : sender(s), msg(m) {};
+	Message(CompID s = NULL_ID, Protocol m = NULL_PTC) : sender(s), msg(m) {};
 
 	//clear the message
 	void Clear();
 	//checks if empty
 	bool IsEmpty();
 	//set message (sender, message)
-	void SetMsg(Game::CompID s, Game::Protocol m);
+	void SetMsg(CompID s, Protocol m);
 };
 
 

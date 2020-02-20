@@ -6,21 +6,19 @@
 #ifndef __GAME_PROTOCOL_H__
 #define __GAME_PROTOCOL_H__
 
-namespace Game {
-	//Identification for each component
-	enum CompID {
-		NULL_ID,
-		GAME_CTR,
-		MOTOR_CTR,
-		INPUT_CTR,
-	};
+//Identification for each component
+enum CompID {
+	NULL_ID,
+	GAME_CTR,
+	MOTOR_CTR,
+	INPUT_CTR,
+};
 
-	//Protocol codes for send communication between components
-	enum Protocol {
-		NULL_PTC,
-		BUTTON1,
-		BUTTON2,
-	};
-}
+//Protocol codes for send communication between components
+enum Protocol {
+	NULL_PTC,
+	BUTTON1,
+	BUTTON2,
+};
 
 #endif
