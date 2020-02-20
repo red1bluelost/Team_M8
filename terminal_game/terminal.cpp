@@ -13,10 +13,10 @@ int main() {
 		std::cout << (m.IsEmpty() ? "IT'S EMPTY" : "NOT EMPTY") << std::endl;
 
 		std::cout << "Enter a SenderID and MSG -->";
-		//game::CompID sid;
-		//game::Protocol mg;
-		//std::cin >> sid >> mg;
+		int sid, mg;
+		std::cin >> sid >> mg;
 
+		m.SetMsg(static_cast<Game::CompID>(sid), static_cast<Game::Protocol>(mg));
 
 		std::cout << (m.IsEmpty() ? "IT'S EMPTY" : "NOT EMPTY") << std::endl;
 		m.Clear();

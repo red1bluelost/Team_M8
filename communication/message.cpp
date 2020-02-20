@@ -14,3 +14,8 @@ void Message::Clear() {
 bool Message::IsEmpty() {
 	return sender == Game::CompID::NULL_ID;
 }
+
+void Message::SetMsg(Game::CompID s, Game::Protocol m) {
+	sender = s;
+	msg = m;
+}

@@ -25,6 +25,8 @@ class Message {
 	void Clear();
 	//checks if empty
 	bool IsEmpty();
+	//set message (sender, message)
+	void SetMsg(Game::CompID s, Game::Protocol m);
 };
 
 
