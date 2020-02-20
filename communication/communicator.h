@@ -6,8 +6,6 @@
 #ifndef __COMMUNICATOR_H__
 #define __COMMUNICATOR_H__
 
-#include "Arduino.h"
-#include "../debug/debug.h"
 
 class Communicator {
 	//enumerate component ids (place this into its own file)
@@ -28,7 +26,7 @@ class Communicator {
 	 * Peek()
 	 */
 
-}
+};
 
 
 #endif

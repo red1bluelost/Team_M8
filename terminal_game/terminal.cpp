@@ -1,14 +1,25 @@
 #include <iostream>
+#include "../communication/message.h"
+#include "../communication/game_protocol.h"
+#include <string>
 
 int main() {
 	//setup for simulate the board game
-	
+	Message m;
 
 	//loop to simulate arduino loop
 	bool kill = false;
 	do {
+		std::cout << (m.IsEmpty() ? "IT'S EMPTY" : "NOT EMPTY") << std::endl;
+
+		std::cout << "Enter a SenderID and MSG -->";
+		//game::CompID sid;
+		//game::Protocol mg;
+		//std::cin >> sid >> mg;
 
 
+		std::cout << (m.IsEmpty() ? "IT'S EMPTY" : "NOT EMPTY") << std::endl;
+		m.Clear();
 
 
 		//ask to kill the game
