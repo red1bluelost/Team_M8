@@ -1,4 +1,4 @@
-/* File:   controllers.h
+/* File:   controller.h
  * Author: Micah Weston
  * Info:   Creates parent class for the different controllers
  */
