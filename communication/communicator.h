@@ -7,25 +7,25 @@
 #define __COMMUNICATOR_H__
 
 #include "game_protocol.h"
+#include "message.h"
 
 class Communicator {
 	//current component id
-	CompID CID;
+	const CompID CID;
 
 	//message buffers for each component
-	static message motorBuffer;
-	static message gameController;
-	static message userInputBuffer; //this might not be necessary
+	static Message gameController;
+	static Message motorBuffer;
+	static Message inputBuffer; //this might not be necessary
+	//this might not be able to properly send msgs
+	//when input is need store the component that asked and that use that
+	//for the receiver of the message
 	
 
 	Public:
-	/*need functions:
-	 * Send(message msg)
-	 * message Retrieve()
-	 * Peek()
-	 */
-	void Send(Protocol msg);
-
+	void Send(CompID r, Protocol msg);
+	Message Retrieve();
+	bool Peek();
 };
 
 
