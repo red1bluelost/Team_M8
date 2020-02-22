@@ -7,7 +7,7 @@
 #define __GAME_PROTOCOL_H__
 
 //Identification for each component
-constexpr enum CompID {
+enum CompID {
 	NULL_ID,
 	GAME_CTR,
 	MOTOR_CTR,
@@ -15,7 +15,7 @@ constexpr enum CompID {
 };
 
 //Protocol codes for send communication between components
-constexpr enum Protocol {
+enum Protocol {
 	NULL_PTC,
 	BUTTON1,
 	BUTTON2,
