@@ -8,6 +8,7 @@
 
 
 #include "../communication/game_protocol.h"
+#include "../communication/communicator.h"
 
 class controller {
 	//privatize default constructor to prevent use
@@ -16,7 +17,9 @@ class controller {
 	//available to the derived controllers
 	protected:
 	const CompID CID;
-	controller(CompID cid) : CID(cid);
-}
+	Communicator Port;
+
+	controller(CompID cid) : CID(cid) , Port(cid) {}
+};
 
 #endif
