@@ -16,14 +16,15 @@ class Communicator {
 	//message buffers for each component
 	static Message gameController;
 	static Message motorBuffer;
-	static Message inputBuffer; //this might not be necessary
+	static Message inputBuffer; 
 	//this might not be able to properly send msgs
 	//when input is need store the component that asked and that use that
 	//for the receiver of the message
 	
 
 	Public:
-	void Send(CompID r, Protocol msg);
+	Communicator(CompID id) : CID(id) {};
+	void Send(CompID, Protocol, DeviceInput);
 	Message Retrieve();
 	bool Peek();
 };

@@ -11,20 +11,28 @@
 
 class Message {
 	//message elements
-	CompID sender = NULL_ID;
-	CompID receiver = NULL_ID;
-	Protocol msg = NULL_PTC;
+	CompID sender;
+	CompID receiver;
+	Protocol msg;
+	DeviceInput din;
 
 	public:
 	//constructor
-	Message(CompID s = NULL_ID, CompID r = NULL_ID, Protocol m = NULL_PTC) : sender(s), receiver(r), msg(m) {};
+	Message(CompID s = NULL_ID, CompID r = NULL_ID, Protocol m = NULL_PTC, DeviceInput d = NULL_DIN) 
+		: sender(s), receiver(r), msg(m), din(d) {}
 
 	//clear the message
 	void Clear();
 	//checks if empty
 	bool IsEmpty();
-	//set message (sender, message)
-	void SetMsg(CompID s, CompID r, Protocol m);
+	//set message (sender, receiver, message)
+	void SetMsg(CompID s, CompID r, Protocol m, DeviceInput d);
+	//Extract message
+	Protocol SeeReq() {return msg;}
+	//Extract device input
+	DeviceInput SeeDin() {return din;}
+	//Extract sender
+	CompID SeeSender() {return sender;}
 };
 
 

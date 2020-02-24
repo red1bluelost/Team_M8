@@ -19,6 +19,18 @@ enum Protocol {
 	NULL_PTC,
 	BUTTON1,
 	BUTTON2,
+	GET_ROLL,
+	PROCESS_ROLL,
+};
+
+enum DeviceInput {
+	NULL_DIN,
+	B1,
+	B2,
+	B3,
+	B4,
+	B5,
+	B6,
 };
 
 #endif

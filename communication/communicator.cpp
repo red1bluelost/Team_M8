@@ -5,16 +5,13 @@
 
 #include "communicator.h"
 
-#include "game_protocol.h"
-#include "message.h"
-
-void Communicator::Send(CompID r, Protocol msg) {
+void Communicator::Send(CompID r, Protocol msg, DeviceInput din = DeviceInput::NULL_DIN) {
 	switch(r) {
 		case CompID::GAME_CTR:
-			gameController.SetMsg(CID, r, msg);
+			gameController.SetMsg(CID, r, msg, din);
 			break;
 		case CompID::MOTOR_CTR:
-			motorBuffer.SetMsg(CID, r, msg);
+			motorBuffer.SetMsg(CID, r, msg, din);
 			break;
 		case CompID::INPUT_CTR:
 			inputBuffer.SetMsg(CID, r, msg);
