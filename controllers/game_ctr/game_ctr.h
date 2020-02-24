@@ -19,3 +19,5 @@ class GameCtr : private controller {
 	GameCtr() : controller(CompID::GAME_CTR);
 
 }
+
+#endif
