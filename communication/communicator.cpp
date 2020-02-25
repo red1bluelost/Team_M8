@@ -8,7 +8,7 @@
 void Communicator::Send(CompID r, Protocol msg, DeviceInput din = DeviceInput::NULL_DIN) {
 	switch(r) {
 		case CompID::GAME_CTR:
-			gameController.SetMsg(CID, r, msg, din);
+			gameBuffer.SetMsg(CID, r, msg, din);
 			break;
 		case CompID::MOTOR_CTR:
 			motorBuffer.SetMsg(CID, r, msg, din);
@@ -23,8 +23,8 @@ Message Communicator::Retrieve() {
 	Message m;
 	switch(CID) {
 		case CompID::GAME_CTR:
-			m = gameController;
-			gameController.clear();
+			m = gameBuffer;
+			gameBuffer.clear();
 			return m;
 		case CompID::MOTOR_CTR:
 			m = motorBuffer;
@@ -40,7 +40,7 @@ Message Communicator::Retrieve() {
 bool Communicator::Peek() {
 	switch(CID) {
 		case CompID::GAME_CTR:
-			return !gameController.IsEmpty();
+			return !gameBuffer.IsEmpty();
 		case CompID::MOTOR_CTR:
 			return !motorBuffer.IsEmpty();
 		case CompID::INPUT_CTR:
