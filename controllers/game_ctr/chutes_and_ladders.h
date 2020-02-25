@@ -13,13 +13,13 @@ struct posn {
 	short int x, y;
 };
 
-struct gameTitle {
+struct gameTile {
 	posn Position;
 	bool IsPipe;
 	int Drain;
 };
 					/*posn probably need changed*/
-std::array<gameTitle, 101> CAL_Tiles = { { { 0, 0}, false,  0 } // 0
+std::array<gameTile, 101> CAL_Tiles = { { { 0, 0}, false,  0 } // 0
 	                                 { { 2, 2}, true,   18} // 1
 					 { { 4, 2}, false,  2 } // 2
 					 { { 6, 2}, false,  3 } // 3
@@ -119,9 +119,25 @@ std::array<gameTitle, 101> CAL_Tiles = { { { 0, 0}, false,  0 } // 0
 					 { { 6, 2}, false, 97 } //97
 					 { { 6, 2}, true,  78 } //98
 					 { { 6, 2}, false, 99 } //99
-					 { { 6, 2}, false, 100} //100
+					 { { 6, 2}, false, 100} } //100
 
 
+class Player {
+	int curTile = 0;
+	posn curPosn = {0, 0} ;
+	bool motorControlled = false;
 
+	public:
+	//set fields
+	void SetTile(int t) {curTile = t}
+	void SetPosn(posn p) {curPosn = p}
+	void SetIfControl(bool b) {motorControlled = b}
+
+	//get fields
+	int GetTile() {return curTile;}
+	posn GetPosn() {return curPosn;}
+	bool IsMotored() {return motorControlled;}
+
+};
 
 #endif //__CHUTES_AND_LADDERS_H__
