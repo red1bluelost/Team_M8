@@ -123,20 +123,25 @@ std::array<gameTile, 101> CAL_Tiles = { { { 0, 0}, false,  0 } // 0
 
 
 class Player {
+	static int playerCount = 0;
+	int turnNum;
 	int curTile = 0;
 	posn curPosn = {0, 0} ;
 	bool motorControlled = false;
 
 	public:
+	Player() { turnNum = ++playerCount; }
+
 	//set fields
-	void SetTile(int t) {curTile = t}
-	void SetPosn(posn p) {curPosn = p}
+	void SetTile(int t)       {curTile = t}
+	void SetPosn(posn p)      {curPosn = p}
 	void SetIfControl(bool b) {motorControlled = b}
 
 	//get fields
-	int GetTile() {return curTile;}
-	posn GetPosn() {return curPosn;}
+	int GetTile()    {return curTile;}
+	posn GetPosn()   {return curPosn;}
 	bool IsMotored() {return motorControlled;}
+	int TurnNum()    {return turnNum;}
 
 };
 
