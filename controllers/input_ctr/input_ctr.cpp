@@ -72,17 +72,16 @@ void InputCtr::getYesNo(Message req) {
 
 
 
-InputCtr::Tick() {
+void InputCtr::Tick() {
 	if (!Port.Peek()) { return; }
 	
-
 	Message req = Port.Retrieve();
 	switch(req.SeeReq()) {
 		case Protocol::GET_ROLL: //need to set up protocols 
 		case Protocol::GET_PLAYER_COUNT:
 			this->getNumberedInput(req);
 			return;
-		case Protocol::GET_PLAYER_COUNT:
+		case Protocol::GET_PLAYER_STATE:
 			this->getYesNo(req);
 			return;
 

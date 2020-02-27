@@ -10,6 +10,7 @@
 #include "../controller.h"
 
 #include "../../communication/game_protocol.h"
+#include "../../communication/communicator.h"
 #include "../../communication/message.h"
 
 class InputCtr : private controller {
@@ -20,8 +21,8 @@ class InputCtr : private controller {
 
 	public:
 	InputCtr() : controller(CompID::INPUT_CTR) {}
-	Setup(short int, short int, short int, short int, short int, short int, short int);
-	Tick();
+	void Setup(short int, short int, short int, short int, short int, short int, short int);
+	void Tick();
 
 };
 

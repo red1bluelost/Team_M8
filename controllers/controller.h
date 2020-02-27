@@ -19,7 +19,7 @@ class controller {
 	const CompID CID;
 	Communicator Port;
 
-	controller(CompID cid) : CID(cid) , Port(cid) {}
+	controller(CompID cid) : CID(cid) , Port(cid) {} //the way Port is initialized might not work!!!!
 };
 
 #endif

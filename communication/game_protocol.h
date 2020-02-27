@@ -17,8 +17,11 @@ enum CompID {
 //Protocol codes for send communication between components
 enum Protocol {
 	NULL_PTC,
+	RESET_GAME,
 	GET_PLAYER_COUNT,
 	PROCESS_PLAYER_COUNT,
+	GET_PLAYER_STATE,
+	PROCESS_PLAYER_STATE,
 	GET_ROLL,
 	PROCESS_ROLL,
 };
