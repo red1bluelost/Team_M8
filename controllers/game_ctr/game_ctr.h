@@ -6,9 +6,9 @@
 #ifndef __GAME_CTR_H__
 #define __GAME_CTR_H__
 
-#include <vector>
-#include <memory>
-#include <iterator>
+#include <vector.h>
+#include <memory.h>
+#include <iterator.h>
 
 #include "chutes_and_ladders.h"
 

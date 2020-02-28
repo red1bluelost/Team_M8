@@ -13,6 +13,7 @@ bool GameCtr::checkPlayerEnd() {
 
 void resetGame(Message) {
 	players.clear();
+	this->Port.Send(CompID::MOTOR_CTR, Protocol::ZERO_XY);
 	this->Port.Send(CompID::INPUT_CTR, Protocol::GET_PLAYER_COUNT);
 }
 
