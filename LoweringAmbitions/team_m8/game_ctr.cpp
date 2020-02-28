@@ -47,7 +47,7 @@ void GameCtr::Tick() {
   Message req = Port.Retrieve();
   switch (req.SeeReq()) {
     case Protocol::PROCESS_PLAYER_COUNT: //need to set up protocols
-      this->declarePlayerCount(req);
+      //this->declarePlayerCount(req);
       return;
     case Protocol::RESET_GAME:
       this->resetGame(req);

@@ -16,9 +16,21 @@ bool Message::IsEmpty() {
   return sender == CompID::NULL_ID;
 }
 
-void Message::SetMsg(CompID s, CompID r, Protocol m, DeviceInput d = DeviceInput::NULL_DIN) {
+void Message::SetMsg(CompID s, CompID r, Protocol m, DeviceInput d) {
   sender = s;
   receiver = r;
   msg = m;
   din = d;
+}
+
+void Message::SetMsg(CompID s, CompID r, Protocol m) {
+  sender = s;
+  receiver = r;
+  msg = m;
+  din = DeviceInput::NULL_DIN;
+}
+
+Message EmptyMsg() {
+  Message msg;
+  return msg;
 }

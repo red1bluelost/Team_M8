@@ -21,8 +21,7 @@ class InputCtr : private controller {
   void getYesNo(Message);
 
   public:
-  InputCtr() : controller(CompID::INPUT_CTR) {}
-  void Setup(short int, short int, short int, short int, short int, short int, short int);
+  InputCtr(short int, short int, short int, short int, short int, short int, short int);
   void Tick();
 
 };

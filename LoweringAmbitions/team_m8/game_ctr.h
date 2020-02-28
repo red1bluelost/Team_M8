@@ -23,6 +23,7 @@ class GameCtr : private controller {
   public:
     GameCtr() : controller(CompID::GAME_CTR) {};
     void Tick();
+    void StartGame();
 };
 
 #endif

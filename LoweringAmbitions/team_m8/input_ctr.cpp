@@ -6,8 +6,9 @@
 #include "input_ctr.h"
 
 
-void InputCtr::Setup(short int pb1, short int pb2, short int pb3,
-    short int pb4, short int pb5, short int pb6, short int enter) {
+InputCtr::InputCtr(short int pb1, short int pb2, short int pb3,
+    short int pb4, short int pb5, short int pb6, short int enter)
+     : controller(CompID::INPUT_CTR) {
   pinb1 = pb1;
   pinb2 = pb2;
   pinb3 = pb3;
