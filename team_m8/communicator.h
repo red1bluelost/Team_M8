@@ -1,7 +1,7 @@
 /* File:   communicator.h
-   Author: Micah Weston
-   Info:   Holds class for the communication object between component
-*/
+ * Author: Micah Weston
+ *  Info:   Holds class for the communication object between component
+ */
 
 #ifndef __COMMUNICATOR_H__
 #define __COMMUNICATOR_H__

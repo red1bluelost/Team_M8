@@ -1,7 +1,7 @@
 /* File:   communicator.cpp
-   Author: Micah Weston
-   Info:   Implements communicator class
-*/
+ * Author: Micah Weston
+ * Info:   Implements communicator class
+ */
 
 #include "communicator.h"
 

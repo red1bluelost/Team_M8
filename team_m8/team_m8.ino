@@ -1,7 +1,7 @@
 /* File:   team_m8.ino
-   Author: Micah Weston
-   Info:   Main program for Team M8 board game
-*/
+ * Author: Micah Weston
+ * Info:   Main program for Team M8 board game
+ */
 
 #include "game_ctr.h"
 #include "input_ctr.h"

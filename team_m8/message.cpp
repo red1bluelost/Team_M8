@@ -1,15 +1,15 @@
 /* File:   message.cpp
-   Author: Micah Weston
-   Info:   Implements message class
-*/
+ * Author: Micah Weston
+ * Info:   Implements message class
+ */
 
 #include "message.h"
 
 void Message::Clear() {
-  sender = CompID::NULL_ID;
+  sender   = CompID::NULL_ID;
   receiver = CompID::NULL_ID;
-  msg = Protocol::NULL_PTC;
-  din = DeviceInput::NULL_DIN;
+  msg      = Protocol::NULL_PTC;
+  din      = DeviceInput::NULL_DIN;
 }
 
 bool Message::IsEmpty() {
@@ -17,17 +17,10 @@ bool Message::IsEmpty() {
 }
 
 void Message::SetMsg(CompID s, CompID r, Protocol m, DeviceInput d) {
-  sender = s;
+  sender   = s;
   receiver = r;
-  msg = m;
-  din = d;
-}
-
-void Message::SetMsg(CompID s, CompID r, Protocol m) {
-  sender = s;
-  receiver = r;
-  msg = m;
-  din = DeviceInput::NULL_DIN;
+  msg      = m;
+  din      = d;
 }
 
 Message EmptyMsg() {

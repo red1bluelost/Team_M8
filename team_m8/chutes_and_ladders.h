@@ -1,7 +1,7 @@
 /* File:   chutes_and_ladders.h
-   Author: Micah Weston
-   Info:   Contains board info, coordinates, and player class
-*/
+ * Author: Micah Weston
+ * Info:   Contains board info, coordinates, and player class
+ */
 
 #ifndef __CHUTES_AND_LADDERS_H__
 #define __CHUTES_AND_LADDERS_H__
@@ -16,6 +16,30 @@ struct gameTile {
   bool IsPipe;
   int Drain;
 };
+
+class Player {
+    int curTile = 0;
+    posn curPosn = {0, 0} ;
+    bool motorControlled = false;
+
+  public:
+    Player() {}
+
+    //reset player
+    void Reset();
+
+    //set fields
+    void SetTile(int t)       {curTile = t;}
+    void SetPosn(posn p)      {curPosn = p;}
+    void SetIfControl(bool b) {motorControlled = b;}
+
+    //get fields
+    int GetTile()    {return curTile;}
+    posn GetPosn()   {return curPosn;}
+    bool IsMotored() {return motorControlled;}
+};
+
+
 /*posn probably need changed*/
 const gameTile CAL_Tiles[] = {
   { { 0, 0}, false,  0 },// 0
@@ -119,46 +143,6 @@ const gameTile CAL_Tiles[] = {
   { { 6, 2}, true,  78 }, //98
   { { 6, 2}, false, 99 }, //99
   { { 6, 2}, false, 100}, //100
-};
-
-
-class Player {
-    int turnNum;
-    int curTile = 0;
-    posn curPosn = {0, 0} ;
-    bool motorControlled = false;
-
-  public:
-    Player() {}
-
-    //reset player
-    void Reset();
-
-    //set fields
-    void SetTile(int t)       {
-      curTile = t;
-    }
-    void SetPosn(posn p)      {
-      curPosn = p;
-    }
-    void SetIfControl(bool b) {
-      motorControlled = b;
-    }
-
-    //get fields
-    int GetTile()    {
-      return curTile;
-    }
-    posn GetPosn()   {
-      return curPosn;
-    }
-    bool IsMotored() {
-      return motorControlled;
-    }
-    int TurnNum()    {
-      return turnNum;
-    }
-
 };
 
 #endif //__CHUTES_AND_LADDERS_H__

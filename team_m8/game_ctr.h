@@ -1,7 +1,7 @@
 /* File:   game_ctr.h
-   Author: Micah Weston
-   Info:   Holds class for the game controller
-*/
+ * Author: Micah Weston
+ * Info:   Holds class for the game controller
+ */
 
 #ifndef __GAME_CTR_H__
 #define __GAME_CTR_H__

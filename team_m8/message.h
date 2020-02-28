@@ -1,7 +1,7 @@
 /* File:   message.h
-   Author: Micah Weston
-   Info:   Holds message class
-*/
+ * Author: Micah Weston
+ * Info:   Holds message class
+ */
 
 #ifndef __MESSAGE_H__
 #define __MESSAGE_H__
@@ -13,11 +13,11 @@ class Message {
     //message elements
     CompID sender;
     CompID receiver;
-    Protocol msg;
-    DeviceInput din;
+    Protocol msg;    //request or response
+    DeviceInput din; //button presses or yes/no
 
   public:
-    //constructor
+    //constructor (default null for all fields)
     Message(CompID s = NULL_ID, CompID r = NULL_ID, Protocol m = NULL_PTC, DeviceInput d = NULL_DIN)
       : sender(s), receiver(r), msg(m), din(d) {}
 
@@ -25,21 +25,14 @@ class Message {
     void Clear();
     //checks if empty
     bool IsEmpty();
-    //set message (sender, receiver, message)
-    void SetMsg(CompID s, CompID r, Protocol m);
+    //set message : sender, receiver, message
     void SetMsg(CompID s, CompID r, Protocol m, DeviceInput d);
     //Extract message
-    Protocol SeeReq() {
-      return msg;
-    }
+    Protocol SeeReq()    {return msg;}
     //Extract device input
-    DeviceInput SeeDin() {
-      return din;
-    }
+    DeviceInput SeeDin() {return din;}
     //Extract sender
-    CompID SeeSender() {
-      return sender;
-    }
+    CompID SeeSender()   {return sender;}
 };
 
 Message EmptyMsg();

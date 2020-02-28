@@ -1,7 +1,7 @@
 /* File:   game_ctr.cpp
-   Author: Micah Weston
-   Info:   Implements class for the game controller
-*/
+ * Author: Micah Weston
+ * Info:   Implements class for the game controller
+ */
 
 #include "game_ctr.h"
 
