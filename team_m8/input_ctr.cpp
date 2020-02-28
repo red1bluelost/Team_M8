@@ -27,7 +27,7 @@ InputCtr::InputCtr(short int pb1, short int pb2, short int pb3,
 
 void InputCtr::getNumberedInput(Message req) {
   //possibly prompt the user for input
-  DeviceInput curInput;
+  int curInput;
   do {
     if(digitalRead(pinb1) == LOW && curInput != 1) {//this might get scream for not converting types
       curInput = 1;
@@ -47,7 +47,7 @@ void InputCtr::getNumberedInput(Message req) {
   
 
   //response to the requester
-  this->Port.Send(req.SeeSender(), req.SeeReq() + 1, (int) curInput); 
+  this->Port.Send(req.SeeSender(), req.SeeReq() + 1, (DeviceInput) curInput); 
 }
 
 void InputCtr::getYesNo(Message req) {

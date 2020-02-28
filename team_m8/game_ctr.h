@@ -16,12 +16,14 @@
 
 class GameCtr : private controller {
     short int player_count;
-    Player players[2];
+    Player players[3];
+    short int curPlayer;
     
     bool checkPlayerEnd();
 
     void resetGame(Message);
     void declarePlayerCount(Message);
+    void movePlayer();
 
   public:
     GameCtr() : controller(CompID::GAME_CTR) {};

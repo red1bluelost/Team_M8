@@ -6,15 +6,15 @@
 #include "game_ctr.h"
 
 bool GameCtr::checkPlayerEnd() {
-//  bool rsp = curPlayer == players.end();
-//  if (rsp) {
-//    curPlayer = players.begin();
-//  }
-//  return rsp;
+  bool rsp = (curPlayer == player_count);
+  if (rsp) {
+    curPlayer = 0;
+  }
+  return rsp;
 }
 
 void GameCtr::resetGame(Message) {
-//  players.clear();
+  curPlayer = 0;
   this->Port.Send(CompID::MOTOR_CTR, Protocol::ZERO_XY, DeviceInput::NULL_DIN);
   this->Port.Send(CompID::INPUT_CTR, Protocol::GET_PLAYER_COUNT, DeviceInput::NULL_DIN);
 }
@@ -47,7 +47,7 @@ void GameCtr::Tick() {
   Message req = Port.Retrieve();
   switch (req.SeeReq()) {
     case Protocol::PROCESS_PLAYER_COUNT: //need to set up protocols
-      //this->declarePlayerCount(req);
+      this->declarePlayerCount(req);
       return;
     case Protocol::RESET_GAME:
       this->resetGame(req);
