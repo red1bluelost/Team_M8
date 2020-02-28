@@ -6,7 +6,7 @@
 #ifndef __GAME_CTR_H__
 #define __GAME_CTR_H__
 
-//#include "chutes_and_ladders.h"
+#include "chutes_and_ladders.h"
 
 #include "controller.h"
 
