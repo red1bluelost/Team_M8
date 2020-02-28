@@ -131,6 +131,9 @@ class Player {
   public:
     Player() {}
 
+    //reset player
+    void Reset();
+
     //set fields
     void SetTile(int t)       {
       curTile = t;

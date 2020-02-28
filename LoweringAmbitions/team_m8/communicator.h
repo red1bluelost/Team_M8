@@ -24,7 +24,7 @@ class Communicator {
 
   public:
     Communicator(CompID id) : CID(id) {}
-    void Send(CompID, Protocol, DeviceInput);
+    void Send(CompID, Protocol, DeviceInput d = DeviceInput::NULL_DIN);
     Message Retrieve();
     bool Peek();
 };

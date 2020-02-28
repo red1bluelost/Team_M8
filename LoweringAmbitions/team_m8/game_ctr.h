@@ -15,6 +15,9 @@
 #include "message.h"
 
 class GameCtr : private controller {
+    short int player_count;
+    Player players[2];
+    
     bool checkPlayerEnd();
 
     void resetGame(Message);

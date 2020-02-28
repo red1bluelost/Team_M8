@@ -19,18 +19,18 @@ void GameCtr::resetGame(Message) {
   this->Port.Send(CompID::INPUT_CTR, Protocol::GET_PLAYER_COUNT, DeviceInput::NULL_DIN);
 }
 
-void declarePlayerCount(Message rsp) {
-//  int plCnt = rsp.SeeDin;
-//  for (int i = 0; i < plCnt; ++i) {
-//    auto sp = std::make_shared<Player>;
-//    players.push_back(sp);
-//  }
-//  curPlayer = players.begin();
-//  this->Port.Send(CompID::INPUT_CTR, Protocol::GET_PLAYER_STATE);
+void GameCtr::declarePlayerCount(Message rsp) {
+  int plCnt = (int) rsp.SeeDin();
+  for (int i = 0; i < plCnt; ++i) {
+    players[i].Reset();
+  }
+  this->Port.Send(CompID::INPUT_CTR, Protocol::GET_PLAYER_STATE);
 
 }
 
-
+void GameCtr::StartGame() {
+  this->Port.Send(CompID::GAME_CTR, Protocol::RESET_GAME);
+}
 
 
 

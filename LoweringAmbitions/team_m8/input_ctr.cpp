@@ -47,7 +47,7 @@ void InputCtr::getNumberedInput(Message req) {
   
 
   //response to the requester
-  this->Port.Send(req.SeeSender(), req.SeeReq() + 1, curInput); 
+  this->Port.Send(req.SeeSender(), req.SeeReq() + 1, (int) curInput); 
 }
 
 void InputCtr::getYesNo(Message req) {
@@ -64,7 +64,7 @@ void InputCtr::getYesNo(Message req) {
   
 
   //response to the requester
-  this->Port.Send(req.SeeSender(), req.SeeReq() + 1, curInput);
+  this->Port.Send(req.SeeSender(), req.SeeReq() + 1, (int) curInput);
 }
 
 
