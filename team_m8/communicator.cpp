@@ -5,6 +5,7 @@
 
 #include "communicator.h"
 
+//sends the message to the specified component
 void Communicator::Send(CompID r, Protocol msg, DeviceInput din = DeviceInput::NULL_DIN) {
   switch (r) {
     case CompID::GAME_CTR:
@@ -19,6 +20,7 @@ void Communicator::Send(CompID r, Protocol msg, DeviceInput din = DeviceInput::N
   }
 }
 
+//retrieves the message from assigned port and clears the buffer
 Message Communicator::Retrieve() {
   Message m;
   switch (CID) {
@@ -37,6 +39,7 @@ Message Communicator::Retrieve() {
   }
 }
 
+//checks if the port has a message in it
 bool Communicator::Peek() {
   switch (CID) {
     case CompID::GAME_CTR:

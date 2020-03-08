@@ -5,7 +5,7 @@
 
 #include "input_ctr.h"
 
-
+//constructor that assigns all the pin numbers and pin modes
 InputCtr::InputCtr(short int pb1, short int pb2, short int pb3,
     short int pb4, short int pb5, short int pb6, short int enter)
      : controller(CompID::INPUT_CTR) {
@@ -25,6 +25,7 @@ InputCtr::InputCtr(short int pb1, short int pb2, short int pb3,
   pinMode(enter, INPUT_PULLUP);
 }
 
+//gets numbered input for dice rolls and number of players
 void InputCtr::getNumberedInput(Message req) {
   //possibly prompt the user for input
   int curInput;
@@ -73,8 +74,9 @@ void InputCtr::getYesNo(Message req) {
 
 
 
+//checks port, execute msg if one is there
 void InputCtr::Tick() {
-  if (!Port.Peek()) { return; }
+  if (!Port.Peek()) {return;}
   
   Message req = Port.Retrieve();
   switch(req.SeeReq()) {

@@ -6,6 +6,7 @@
 #ifndef __INPUT_CTR_H__
 #define __INPUT_CTR_H__
 
+#include <LiquidCrystal.h>
 #include "Arduino.h"
 
 #include "controller.h"
@@ -15,14 +16,20 @@
 #include "message.h"
 
 class InputCtr : private controller {
-  short int pinb1, pinb2, pinb3, pinb4, pinb5, pinb6, pinen;
+    //pins for buttons
+    short int pinb1, pinb2, pinb3, pinb4, pinb5, pinb6, pinen;
+    //lcd display for prompts
 
-  void getNumberedInput(Message); //used for die rolls and number of players and more
-  void getYesNo(Message);
+
+    //gets numbered input for dice rolls and number of players
+    void getNumberedInput(Message); //used for die rolls and number of players and more
+    void getYesNo(Message);
 
   public:
-  InputCtr(short int, short int, short int, short int, short int, short int, short int);
-  void Tick();
+    //constructor that assigns all the pin numbers and pin modes
+    InputCtr(short int, short int, short int, short int, short int, short int, short int);
+    //checks port, execute msg if one is there
+    void Tick();
 
 };
 

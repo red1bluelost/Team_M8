@@ -5,6 +5,7 @@
 
 #include "message.h"
 
+//clears the message reseting everything to null
 void Message::Clear() {
   sender   = CompID::NULL_ID;
   receiver = CompID::NULL_ID;
@@ -12,10 +13,12 @@ void Message::Clear() {
   din      = DeviceInput::NULL_DIN;
 }
 
+//checks if message is null
 bool Message::IsEmpty() {
   return sender == CompID::NULL_ID;
 }
 
+//sets message based on arguments
 void Message::SetMsg(CompID s, CompID r, Protocol m, DeviceInput d) {
   sender   = s;
   receiver = r;
@@ -23,6 +26,7 @@ void Message::SetMsg(CompID s, CompID r, Protocol m, DeviceInput d) {
   din      = d;
 }
 
+//Returns an empty message
 Message EmptyMsg() {
   Message msg;
   return msg;
