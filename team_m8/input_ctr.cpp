@@ -69,7 +69,7 @@ void InputCtr::getNumberedInput(Message req) {
   lcd.print(curInput);
 
   //response to the requester
-  this->Port.Send(req.SeeSender(), req.SeeReq() + 1, (DeviceInput) curInput); 
+  this->Port.Send(req.SeeSender(), (Protocol) (1 + req.SeeReq()), (DeviceInput) curInput); 
 }
 
 void InputCtr::getYesNo(Message req) {
@@ -86,7 +86,7 @@ void InputCtr::getYesNo(Message req) {
     lcd.print("the result");
   }
 
-  DeviceInput curInput;
+  int curInput;
   do {
     if(digitalRead(pinb1) == LOW && curInput != 1) {//this might get scream for not converting types
       curInput = 7;
@@ -102,7 +102,7 @@ void InputCtr::getYesNo(Message req) {
   lcd.print(curInput == 7 ? "Yes" : "No");  
 
   //response to the requester
-  this->Port.Send(req.SeeSender(), req.SeeReq() + 1, (int) curInput);
+  Port.Send(req.SeeSender(), (Protocol) (1 + req.SeeReq()), (DeviceInput) curInput);
 }
 
 

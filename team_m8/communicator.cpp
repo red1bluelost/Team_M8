@@ -6,7 +6,7 @@
 #include "communicator.h"
 
 //sends the message to the specified component
-void Communicator::Send(CompID r, Protocol msg, DeviceInput din = DeviceInput::NULL_DIN) {
+void Communicator::Send(CompID r, Protocol msg, DeviceInput din) {
   switch (r) {
     case CompID::GAME_CTR:
       gameBuffer.SetMsg(CID, r, msg, din);
