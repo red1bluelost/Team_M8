@@ -19,6 +19,7 @@ class InputCtr : private controller {
     //pins for buttons
     short int pinb1, pinb2, pinb3, pinb4, pinb5, pinb6, pinen;
     //lcd display for prompts
+    LiquidCrystal lcd;
 
 
     //gets numbered input for dice rolls and number of players
@@ -27,7 +28,10 @@ class InputCtr : private controller {
 
   public:
     //constructor that assigns all the pin numbers and pin modes
-    InputCtr(short int, short int, short int, short int, short int, short int, short int);
+    InputCtr(short int, short int, short int,
+     short int, short int, short int, short int,
+     short int, short int, short int,
+     short int, short int, short int);
     //checks port, execute msg if one is there
     void Tick();
 
