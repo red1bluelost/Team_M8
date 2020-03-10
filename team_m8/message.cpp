@@ -28,6 +28,10 @@ void Message::SetMsg(CompID s, CompID r, Protocol m, DeviceInput d) {
 
 //Returns an empty message
 Message EmptyMsg() {
-  Message msg;
-  return msg;
+  return Message{
+    CompID::NULL_ID, 
+    CompID::NULL_ID, 
+    Protocol::NULL_PTC, 
+    DeviceInput::NULL_DIN,
+  };
 }

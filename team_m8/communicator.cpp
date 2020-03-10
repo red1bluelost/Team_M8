@@ -5,6 +5,11 @@
 
 #include "communicator.h"
 
+//initializes the static message buffers for communication
+Message Communicator::gameBuffer = EmptyMsg();
+Message Communicator::motorBuffer = EmptyMsg();
+Message Communicator::inputBuffer = EmptyMsg();
+
 //sends the message to the specified component
 void Communicator::Send(CompID r, Protocol msg, DeviceInput din) {
   switch (r) {

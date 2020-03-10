@@ -69,7 +69,7 @@ void InputCtr::getNumberedInput(Message req) {
   lcd.print(curInput);
 
   //response to the requester
-  this->Port.Send(req.SeeSender(), (Protocol) (1 + req.SeeReq()), (DeviceInput) curInput); 
+  Port.Send(req.SeeSender(), (Protocol) (1 + req.SeeReq()), (DeviceInput) curInput); 
 }
 
 void InputCtr::getYesNo(Message req) {
@@ -119,10 +119,10 @@ void InputCtr::Tick() {
   switch(req.SeeReq()) {
     case Protocol::GET_ROLL: //need to set up protocols 
     case Protocol::GET_PLAYER_COUNT:
-      this->getNumberedInput(req);
+      getNumberedInput(req);
       return;
     case Protocol::GET_PLAYER_STATE:
-      this->getYesNo(req);
+      getYesNo(req);
       return;
 
   }
