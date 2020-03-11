@@ -8,7 +8,7 @@
 
 
 struct posn {
-  short int x, y;
+  int x, y;
 };
 
 struct gameTile {
@@ -32,6 +32,7 @@ class Player {
     void SetTile(int t)       {curTile = t;}
     void SetPosn(posn p)      {curPosn = p;}
     void SetIfControl(bool b) {motorControlled = b;}
+    void MoveYPosn(int);
 
     //get fields
     int GetTile()    {return curTile;}
@@ -42,7 +43,7 @@ class Player {
 
 /*posn probably need changed*/
 const gameTile CAL_Tiles[] = {
-  { { 0, 0}, false,  0 },// 0
+  { { 0, 0}, false,  0 }, // 0
   { { 2, 2}, true,   18}, // 1
   { { 4, 2}, false,  2 }, // 2
   { { 6, 2}, false,  3 }, // 3

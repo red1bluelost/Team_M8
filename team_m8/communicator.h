@@ -25,7 +25,7 @@ class Communicator {
   public:
     Communicator(CompID id) : CID(id) {}
     //sends the message to the specified component
-    void Send(CompID, Protocol, DeviceInput d = DeviceInput::NULL_DIN);
+    void Send(CompID, Protocol, DeviceInput = DeviceInput::NULL_DIN);
     //retrieves the message from assigned port and clears the buffer
     Message Retrieve();
     //checks if the port has a message in it

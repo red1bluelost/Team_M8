@@ -9,3 +9,7 @@ void Player::Reset() {
    curPosn = {0, 0};
    motorControlled = false;
 }
+
+void Player::MoveYPosn(int y) {
+   ++curPosn.y;
+}

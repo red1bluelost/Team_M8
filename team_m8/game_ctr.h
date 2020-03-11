@@ -20,13 +20,14 @@ class GameCtr : private controller {
     short int curPlayer;
     
     //checks if current player is after end, if so resets to start
-    bool checkPlayerEnd();
+    void nextPlayer();
 
     //sends out the commands to reset the board and start a new game
     void resetGame(Message);
     //resets players in array based on how many are playing
     void declarePlayerCount(Message);
-    void movePlayer();
+    //processes the role and moves the player
+    void movePlayer(Message);
 
   public:
     GameCtr() : controller(CompID::GAME_CTR) {};

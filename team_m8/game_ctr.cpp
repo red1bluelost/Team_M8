@@ -5,13 +5,21 @@
 
 #include "game_ctr.h"
 
+extern MovePtc MoveBuffer[256];
+
+void clearMoveBuf() {
+  for(auto & m : MoveBuffer) {
+    m = MovePtc::END;
+  }
+}
+
 //checks if current player is after end, if so resets to start
-bool GameCtr::checkPlayerEnd() {
-  bool rsp = (curPlayer == player_count);
-  if (rsp) {
+void GameCtr::nextPlayer() {
+  ++curPlayer;
+  bool atEnd = (curPlayer == player_count);
+  if (atEnd) {
     curPlayer = 0;
   }
-  return rsp;
 }
 
 //sends out the commands to reset the board and start a new game
@@ -28,9 +36,43 @@ void GameCtr::declarePlayerCount(Message rsp) {
   //reset players necessary
   for (int i = 0; i < plCnt; ++i) {
     players[i].Reset();
+    players[i].MoveYPosn(i);
   }
   //send request for player states (game- vs self-controlled)
   Port.Send(CompID::INPUT_CTR, Protocol::GET_PLAYER_STATE);
+
+}
+
+//processes the role and moves the player
+void GameCtr::movePlayer(Message rsp) {
+  clearMoveBuf();
+  int roll = rsp.SeeDin();
+
+  //compute move commands
+  int mbi = 0; //move buffer iterator
+
+  posn locBegin = players[curPlayer].GetPosn();
+  int tileBegin = players[curPlayer].GetTile();
+
+  //incase of start of game (first roll)
+  if (tileBegin == 0) {
+    MoveBuffer[mbi++] = MovePtc::R090;
+    MoveBuffer[mbi++] = MovePtc::R090;
+    MoveBuffer[mbi++] = MovePtc::R000;
+    MoveBuffer[mbi++] = MovePtc::R000;
+    --roll;
+  }
+
+  int tileEnd = tileBegin + roll;
+  gameTile EndGameTile = CAL_Tiles[tileEnd];
+  posn locEnd = EndGameTile.Position;
+
+  int yDiff = locEnd.y - locBegin.y;
+  int xDiff = locEnd.x - locBegin.x;
+  bool direction = (tileBegin / 10) % 2; //false = right, true = left
+
+
+
 
 }
 
@@ -51,6 +93,9 @@ void GameCtr::Tick() {
 
   Message req = Port.Retrieve();
   switch (req.SeeReq()) {
+    case Protocol::PROCESS_ROLL:
+      movePlayer(req);
+      return;
     case Protocol::PROCESS_PLAYER_COUNT: //need to set up protocols
       declarePlayerCount(req);
       return;

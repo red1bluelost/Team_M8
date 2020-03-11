@@ -39,4 +39,18 @@ enum DeviceInput {
   NO,
 };
 
+enum MovePtc {
+  END,
+  R000,
+  R045,
+  R090,
+  R135,
+  R180,
+  R225,
+  R270,
+  R315,
+};
+
+// const MovePtc MOVECMDS[9] = {END, R000, R045, R090, R135, R180, R225, R270, R315};
+
 #endif
