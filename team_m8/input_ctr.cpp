@@ -9,7 +9,7 @@
 InputCtr::InputCtr(short int pb1, short int pb2, short int pb3,
     short int pb4, short int pb5, short int pb6, short int enter,
     short int l1, short int l2, short int l3,
-    short int l4, short int l5, short int l6)
+    short int l4, short int l5, short int l6, short int contrast)
      : controller(CompID::INPUT_CTR),
      pinb1(pb1),
      pinb2(pb2),
@@ -26,6 +26,7 @@ InputCtr::InputCtr(short int pb1, short int pb2, short int pb3,
   pinMode(pb5, INPUT_PULLUP);
   pinMode(pb6, INPUT_PULLUP);
   pinMode(enter, INPUT_PULLUP);
+  analogWrite(contrast, 105);
   lcd.begin(16,2);
   lcd.clear();
 }
@@ -34,18 +35,18 @@ InputCtr::InputCtr(short int pb1, short int pb2, short int pb3,
 void InputCtr::getNumberedInput(Message req) {
   //prompt the user for input
   lcd.clear();
-  lcd.setCursor(0,1);
+  lcd.setCursor(0,0);
   if(req.SeeReq() == Protocol::GET_PLAYER_COUNT) {
     lcd.print("Enter number of");
-    lcd.setCursor(1,1);
-    lcd.print("players");
+    lcd.setCursor(0,1);
+    lcd.print("players : ");
   } else if (req.SeeReq() == Protocol::GET_ROLL) {
     lcd.print("Spin and enter");
-    lcd.setCursor(1,1);
-    lcd.print("the result");
+    lcd.setCursor(0,1);
+    lcd.print("the result : ");
   }
 
-  int curInput;
+  int curInput = 1;
   do {
     if(digitalRead(pinb1) == LOW && curInput != 1) {//this might get scream for not converting types
       curInput = 1;
@@ -60,13 +61,18 @@ void InputCtr::getNumberedInput(Message req) {
     } else if(digitalRead(pinb6) == LOW && curInput != 6) {
       curInput = 6;
     }
-  } while(digitalRead(pinen) == LOW); 
-  
+    lcd.setCursor(13,1);
+    lcd.print(curInput);
+  } while(digitalRead(pinen) == HIGH); 
+
   //return a response to the user
   lcd.clear();
-  lcd.setCursor(0,1);
+  lcd.setCursor(0,0);
   lcd.print("You entered ");
   lcd.print(curInput);
+
+  delay(500);
+
 
   //response to the requester
   Port.Send(req.SeeSender(), (Protocol) (1 + req.SeeReq()), (DeviceInput) curInput); 
@@ -75,31 +81,35 @@ void InputCtr::getNumberedInput(Message req) {
 void InputCtr::getYesNo(Message req) {
   //prompt the user for input
   lcd.clear();
-  lcd.setCursor(0,1);
+  lcd.setCursor(0,0);
   if(req.SeeReq() == Protocol::GET_PLAYER_STATE) {
     lcd.print("Need Team M8?");
-    lcd.setCursor(1,1);
+    lcd.setCursor(0,1);
     lcd.print("1 = Yes, 2 = No");
   } else if (req.SeeReq() == Protocol::GET_ROLL) { //modify for replay
     lcd.print("1 = Yes, 2 = No");
-    lcd.setCursor(1,1);
+    lcd.setCursor(0,1);
     lcd.print("the result");
   }
 
-  int curInput;
+  int curInput = 8;
   do {
     if(digitalRead(pinb1) == LOW && curInput != 1) {//this might get scream for not converting types
       curInput = 7;
     } else if(digitalRead(pinb2) == LOW && curInput != 2) {
       curInput = 8;
     }
-  } while(digitalRead(pinen) == LOW); 
-
+    lcd.setCursor(13,0);
+    lcd.print(curInput == 7 ? "Yes" : "No ");  
+  } while(digitalRead(pinen) == HIGH); 
   //return a response to the user
   lcd.clear();
-  lcd.setCursor(0,1);
+  lcd.setCursor(0,0);
   lcd.print("You entered ");
   lcd.print(curInput == 7 ? "Yes" : "No");  
+
+  delay(500);
+
 
   //response to the requester
   Port.Send(req.SeeSender(), (Protocol) (1 + req.SeeReq()), (DeviceInput) curInput);

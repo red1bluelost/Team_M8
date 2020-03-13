@@ -31,7 +31,7 @@ class InputCtr : private controller {
     InputCtr(short int, short int, short int,
      short int, short int, short int, short int,
      short int, short int, short int,
-     short int, short int, short int);
+     short int, short int, short int, short int);
     //checks port, execute msg if one is there
     void Tick();
 

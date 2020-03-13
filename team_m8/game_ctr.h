@@ -20,12 +20,14 @@ class GameCtr : private controller {
     short int curPlayer;
     
     //checks if current player is after end, if so resets to start
-    void nextPlayer();
+    bool nextPlayer();
 
     //sends out the commands to reset the board and start a new game
     void resetGame(Message);
     //resets players in array based on how many are playing
     void declarePlayerCount(Message);
+    //assigns whether player is self controlled
+    void processPlayerState(Message);
     //processes the role and moves the player
     void movePlayer(Message);
 
