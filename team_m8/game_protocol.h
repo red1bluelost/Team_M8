@@ -25,6 +25,9 @@ enum Protocol {
   PROCESS_PLAYER_STATE,
   GET_ROLL,
   PROCESS_ROLL,
+  MOVE_PIECE,
+  CHECK_PIPE,
+  PIPE_PIECE,
 };
 
 enum DeviceInput {

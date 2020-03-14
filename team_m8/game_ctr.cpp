@@ -6,6 +6,7 @@
 #include "game_ctr.h"
 
 extern MovePtc MoveBuffer[256];
+extern posn BufferPiecePosn;
 
 void clearMoveBuf() {
   for(auto & m : MoveBuffer) {
@@ -63,6 +64,7 @@ void GameCtr::movePlayer(Message rsp) {
   int mbi = 0; //move buffer iterator
 
   posn locBegin = players[curPlayer].GetPosn();
+  BufferPiecePosn = locBegin; //for motor to grab piece
   int tileBegin = players[curPlayer].GetTile();
 
   //incase of start of game (first roll)
@@ -77,14 +79,45 @@ void GameCtr::movePlayer(Message rsp) {
   int tileEnd = tileBegin + roll;
   gameTile EndGameTile = CAL_Tiles[tileEnd];
   posn locEnd = EndGameTile.Position;
+  locEnd.y = locEnd.y + curPlayer;
 
   bool direction = ((tileBegin - 1)/ 10) % 2; //false = right, true = left
+  bool oneCoordinate = ((tileBegin - 1)/ 10) == ((tileEnd - 1)/ 10);
 
-//figure out if it only needs to move x or y or x and y
+  if(oneCoordinate) {
+    for(int i = 0; i < roll; ++i) {
+      MoveBuffer[mbi++] = (direction ? MovePtc::R000 : MovePtc::R180);
+      MoveBuffer[mbi++] = (direction ? MovePtc::R000 : MovePtc::R180);
+    }
+  } else { //for if the y axis must change
+    int maxOnRow = ((tileBegin - 1)/10 + 1) * 10;
+    int firstRowMove = maxOnRow - tileBegin;
 
-  // int yDiff = locEnd.y - locBegin.y;
-  // int xDiff = locEnd.x - locBegin.x;
+    for(int i = 0; i < firstRowMove; ++i) {
+      MoveBuffer[mbi++] = (direction ? MovePtc::R000 : MovePtc::R180);
+      MoveBuffer[mbi++] = (direction ? MovePtc::R000 : MovePtc::R180);
+    }
 
+    roll -= firstRowMove;
+
+    MoveBuffer[mbi++] = (direction ? MovePtc::R000 : MovePtc::R180);
+    for(int i = 0; i < 4; ++i) { //4 is assuming that there will be 4 interior spaces vertically in a tile
+      MoveBuffer[mbi++] = MovePtc::R090;
+    }
+    direction = !direction;
+    MoveBuffer[mbi++] = (direction ? MovePtc::R000 : MovePtc::R180);
+
+    --roll;
+    for(int i = 0; i < roll; ++i) {
+      MoveBuffer[mbi++] = (direction ? MovePtc::R000 : MovePtc::R180);
+      MoveBuffer[mbi++] = (direction ? MovePtc::R000 : MovePtc::R180);
+    }
+  }
+
+  players[curPlayer].SetPosn(locEnd);
+  players[curPlayer].SetTile(tileEnd);
+
+  Port.Send(CompID::MOTOR_CTR, Protocol::MOVE_PIECE);
 }
 
 
